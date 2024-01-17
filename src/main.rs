@@ -1,13 +1,11 @@
 use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
-use serde_json::json;
-
-mod modules;
-use modules::*;
+use serde_json::{json, to_string_pretty, Result};
 
 mod game_version;
+use game_version::FactorioVersion;
 
-
+/* 
 // Struct to represent a recipe
 struct Recipe<'a> {
     ingredients: HashMap<&'a str, u32>,
@@ -46,9 +44,13 @@ fn calculate_resources(recipes: &HashMap<&str, Recipe>, recipe_name: &str, quant
         println!("Recipe not found.");
     }
 }
-
-fn main() {
-    let assembler = Assembler{
+*/
+fn main() -> Result<()>{
+    let factorio_1_1 = FactorioVersion::factorio_1_1();
+    let json = to_string_pretty(&factorio_1_1)?;
+    println!("{}", json);
+    Ok(())
+    /*let assembler = Assembler{
         craft_speed: 32,
     };
     let recipe= modules::Recipe{
@@ -102,4 +104,5 @@ fn main() {
 
     // Calculate the needed resources for a specific recipe and quantity per minute
     calculate_resources(&recipes, "car", 1, "minute");
+    */
 }

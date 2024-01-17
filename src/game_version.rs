@@ -1,35 +1,39 @@
-use serde::{Serialize, Deserialize, de};
-use serde_json::{json;to_string_pretty,Result};
+use serde_derive::{Serialize, Deserialize};
+use serde_json::{json, to_string_pretty, Result};
 
 #[derive(Serialize, Deserialize)]
-struct FactorioVersion{
+pub struct FactorioVersion{
     
     game_version_name: &'static str,
     game_version_number: &'static str,
     modded_factorio: bool,
 
+    /* 
     building_list: BuildingList,
     beacon_list: BeaconList,
     recipe_list: RecipeList,
     module_list: ModuleList,
+    */
 }
 
 impl FactorioVersion{
-    fn factorio_1_1() -> Self {
+    pub fn factorio_1_1() -> Self {
         FactorioVersion{
             game_version_name: "Factorio",
             game_version_number: "1.1",
             modded_factorio: false,
-
+            /* 
             building_list: BuildingList::new(),
             beacon_list: BeaconList::new(),
             recipe_list: RecipeList::new(),
             module_list: ModuleList::new(),
+            */
         }
     }
 }
 
-enum ModuleKind<>{
+
+enum ModuleKind{
     Efficiency,
     Productivity,
     Speed,
@@ -44,7 +48,7 @@ struct Module{
     module_kind: ModuleKind,
     module_power: ModulePower,
 }
-
+/* 
 impl Module{
     fn new(module_kind: ModuleKind, module_power: ModulePower) -> Module{
         Module{
@@ -164,7 +168,7 @@ struct ModuleSpecification{
     module_slots: u8,
     module_kind_allowed: Vec<ModuleKind>,
 }
-
+/* 
 let assembler_1 = Assembler{
     name: "assembling-machine-1",
     crafting_speed: 0.5,
@@ -200,3 +204,5 @@ let assembler_1 = Assembler{
         module_info_icon_shift: vec![0.0, 0.0],
         module_info_multi_row_initial_height_modifier: -0.3
     }
+*/
+*/

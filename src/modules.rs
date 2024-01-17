@@ -24,6 +24,7 @@ trait AcceptsModule{
     fn apply_module(&self);
 }
 
+/* 
 impl Module {
     fn get_modifier(&self) -> u8 {
         let mut modifier: u8 = 0;
@@ -76,6 +77,7 @@ impl Module {
     }
     
 }
+*/
 
 pub struct Assembler{
     pub craft_speed: u8,
