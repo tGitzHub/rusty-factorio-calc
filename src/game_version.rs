@@ -1,5 +1,4 @@
 use serde_derive::{Serialize, Deserialize};
-use serde_json::{json, to_string_pretty, Result};
 
 #[derive(Serialize, Deserialize)]
 pub struct FactorioVersion{
@@ -8,6 +7,7 @@ pub struct FactorioVersion{
     game_version_number: &'static str,
     modded_factorio: bool,
 
+    module: Module,
     /* 
     building_list: BuildingList,
     beacon_list: BeaconList,
@@ -22,6 +22,8 @@ impl FactorioVersion{
             game_version_name: "Factorio",
             game_version_number: "1.1",
             modded_factorio: false,
+            module: Module::new(ModuleKind::Efficiency, ModulePower::One),
+
             /* 
             building_list: BuildingList::new(),
             beacon_list: BeaconList::new(),
@@ -33,22 +35,25 @@ impl FactorioVersion{
 }
 
 
+#[derive(Serialize, Deserialize)]
 enum ModuleKind{
     Efficiency,
     Productivity,
     Speed,
 }
+#[derive(Serialize, Deserialize)]
 enum ModulePower{
     One,
     Two,
     Three,
 }
 
+#[derive(Serialize, Deserialize)]
 struct Module{
     module_kind: ModuleKind,
     module_power: ModulePower,
 }
-/* 
+
 impl Module{
     fn new(module_kind: ModuleKind, module_power: ModulePower) -> Module{
         Module{
@@ -57,7 +62,7 @@ impl Module{
         }
     }
 }
-
+/* 
 struct BuildingList{
     assembler: [Assembler; N],
     furnace: Furnace,
