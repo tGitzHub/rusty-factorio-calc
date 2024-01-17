@@ -1,5 +1,3 @@
-use crate::Recipe;
-
 struct Factorio1_1{
     game_version_name: &'static str,
     game_version_number: f32,
