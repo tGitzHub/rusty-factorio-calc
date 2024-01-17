@@ -5,8 +5,9 @@ pub struct FactorioVersion{
     
     game_version_name: &'static str,
     game_version_number: &'static str,
+    
     modded_factorio: bool,
-
+    
     module: Module,
     /* 
     building_list: BuildingList,
