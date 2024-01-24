@@ -1,9 +1,12 @@
 use std::collections::HashMap;
 use serde::{Serialize, Deserialize};
 use serde_json::{json, to_string_pretty, Result};
+use rust_decimal;
+use rust_decimal_macros::dec;
 
 mod game_version;
 use game_version::FactorioVersion;
+use game_version::Assembler;
 
 /* 
 // Struct to represent a recipe
@@ -48,6 +51,19 @@ fn calculate_resources(recipes: &HashMap<&str, Recipe>, recipe_name: &str, quant
 fn main() -> Result<()>{
     let factorio_1_1 = FactorioVersion::factorio_1_1();
     let json = to_string_pretty(&factorio_1_1)?;
+    
+    let a = dec!(0.1);
+    let b = dec!(0.2);
+    let c = a + b;
+    println!("{}", c);
+
+
+    let a1 = 0.1;
+    let b1 = 0.2;
+    let c1 = a1 + b1;
+    println!("{}", c1);
+
+    
     println!("{}", json);
     Ok(())
     /*let assembler = Assembler{

@@ -1,4 +1,5 @@
 use serde_derive::{Serialize, Deserialize};
+use derive_builder::Builder;
 
 #[derive(Serialize, Deserialize)]
 pub struct FactorioVersion{
@@ -36,20 +37,20 @@ impl FactorioVersion{
 }
 
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 enum ModuleKind{
     Efficiency,
     Productivity,
     Speed,
 }
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 enum ModulePower{
     One,
     Two,
     Three,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 struct Module{
     module_kind: ModuleKind,
     module_power: ModulePower,
@@ -62,6 +63,25 @@ impl Module{
             module_power,
         }
     }
+}
+
+#[derive(Builder)]
+pub struct Assembler{
+    id: usize,
+    //assembler_kind: AssemblerKind,
+    recipe: Recipe,
+    module_inventory_size: u8,
+    module_list: Vec<Option<Module>>,
+}
+
+#[derive(Clone)]
+struct AssemblerKind{
+    tier: u8,
+    crafting_speed: f32,
+}
+#[derive(Clone)]
+struct Recipe{
+
 }
 /* 
 struct BuildingList{
