@@ -1,16 +1,15 @@
-use serde_derive::{Serialize, Deserialize};
 use derive_builder::Builder;
+use serde_derive::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
-pub struct FactorioVersion{
-    
+pub struct FactorioVersion {
     game_version_name: &'static str,
     game_version_number: &'static str,
-    
+
     modded_factorio: bool,
-    
+
     module: Module,
-    /* 
+    /*
     building_list: BuildingList,
     beacon_list: BeaconList,
     recipe_list: RecipeList,
@@ -18,15 +17,14 @@ pub struct FactorioVersion{
     */
 }
 
-impl FactorioVersion{
+impl FactorioVersion {
     pub fn factorio_1_1() -> Self {
-        FactorioVersion{
+        FactorioVersion {
             game_version_name: "Factorio",
             game_version_number: "1.1",
             modded_factorio: false,
             module: Module::new(ModuleKind::Efficiency, ModulePower::One),
-
-            /* 
+            /*
             building_list: BuildingList::new(),
             beacon_list: BeaconList::new(),
             recipe_list: RecipeList::new(),
@@ -36,29 +34,28 @@ impl FactorioVersion{
     }
 }
 
-
 #[derive(Serialize, Deserialize, Clone)]
-enum ModuleKind{
+enum ModuleKind {
     Efficiency,
     Productivity,
     Speed,
 }
 #[derive(Serialize, Deserialize, Clone)]
-enum ModulePower{
+enum ModulePower {
     One,
     Two,
     Three,
 }
 
 #[derive(Serialize, Deserialize, Clone)]
-struct Module{
+struct Module {
     module_kind: ModuleKind,
     module_power: ModulePower,
 }
 
-impl Module{
-    fn new(module_kind: ModuleKind, module_power: ModulePower) -> Module{
-        Module{
+impl Module {
+    fn new(module_kind: ModuleKind, module_power: ModulePower) -> Module {
+        Module {
             module_kind,
             module_power,
         }
@@ -66,7 +63,7 @@ impl Module{
 }
 
 #[derive(Builder)]
-pub struct Assembler{
+pub struct Assembler {
     id: usize,
     //assembler_kind: AssemblerKind,
     recipe: Recipe,
@@ -75,15 +72,13 @@ pub struct Assembler{
 }
 
 #[derive(Clone)]
-struct AssemblerKind{
+struct AssemblerKind {
     tier: u8,
     crafting_speed: f32,
 }
 #[derive(Clone)]
-struct Recipe{
-
-}
-/* 
+struct Recipe {}
+/*
 struct BuildingList{
     assembler: [Assembler; N],
     furnace: Furnace,
@@ -194,7 +189,7 @@ struct ModuleSpecification{
     module_slots: u8,
     module_kind_allowed: Vec<ModuleKind>,
 }
-/* 
+/*
 let assembler_1 = Assembler{
     name: "assembling-machine-1",
     crafting_speed: 0.5,
@@ -232,3 +227,4 @@ let assembler_1 = Assembler{
     }
 */
 */
+
